@@ -60,9 +60,9 @@ namespace TimeSheetApp.Properties {
             }
         }
         
-        public static System.Drawing.Icon Icon1 {
+        public static System.Drawing.Icon Icon {
             get {
-                object obj = ResourceManager.GetObject("Icon1", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

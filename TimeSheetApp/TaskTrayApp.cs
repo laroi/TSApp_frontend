@@ -60,7 +60,7 @@ namespace TimeSheetApp
                 string[] times = UserModel.time.Split(',');
                 MenuItem configMenuItem = new MenuItem("Launch App", new EventHandler(ShowConfig));
                 MenuItem exitMenuItem = new MenuItem("Exit", new EventHandler(Exit));
-                notifyIcon.Icon = TimeSheetApp.Properties.Resources.Icon1;
+                notifyIcon.Icon = TimeSheetApp.Properties.Resources.Icon;
                 notifyIcon.DoubleClick += new EventHandler(ShowMessage);
                 notifyIcon.ContextMenu = new ContextMenu(new MenuItem[] { configMenuItem, exitMenuItem });
                 notifyIcon.Visible = true;
@@ -73,8 +73,8 @@ namespace TimeSheetApp
                 var trigger = TriggerBuilder.Create()
                                             .StartAt(DateBuilder.DateOf(Convert.ToInt32(times[0]), Convert.ToInt32(times[1]), Convert.ToInt32(times[2])))
                                             .WithSimpleSchedule(x => x
-                                            .WithInterval(TimeSpan.FromMilliseconds(0))
-                                            .WithRepeatCount(0))
+                                            .WithInterval(TimeSpan.FromMilliseconds(60000))
+                                            .WithRepeatCount(10))
                                             .ForJob(job)
                                             .Build();
                 sched.ScheduleJob(job, trigger);

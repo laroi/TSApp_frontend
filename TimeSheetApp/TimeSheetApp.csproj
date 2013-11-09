@@ -157,11 +157,10 @@
     <Compile Include="Data\UserModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icon1.ico" />
-    <None Include="Resources\appIcon.bmp" />
+    <None Include="Resources\test.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\settings.json" />
+    <None Include="Resources\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

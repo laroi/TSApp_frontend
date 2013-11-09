@@ -21,3 +21,26 @@ C:\Users\Akbar\Documents\Visual Studio 2010\Projects\TimeSheetApp\TimeSheetApp\o
 C:\Users\Akbar\Documents\Visual Studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Debug\TimeSheetApp.EditServer.resources
 C:\Users\Akbar\Documents\Visual Studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Debug\TimeSheetApp.TextArgss.resources
 C:\Users\Akbar\Documents\Visual Studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Debug\TimeSheetApp.GetReport.resources
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\bin\Debug\TimeSheetApp.exe.config
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.exe
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.pdb
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\bin\Debug\TimeSheetApp.exe
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\bin\Debug\TimeSheetApp.pdb
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\bin\Debug\Newtonsoft.Json.dll
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\bin\Debug\Quartz.dll
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\bin\Debug\Common.Logging.dll
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\bin\Debug\Quartz.pdb
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\bin\Debug\Quartz.xml
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.AddEntry.resources
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.TextArgs.resources
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.EditServer.resources
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.EditTimeSheet.resources
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.Form1.resources
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.GetReport.resources
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.Properties.Resources.resources
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.TextArgss.resources
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\GenerateResource.write.1.tlog

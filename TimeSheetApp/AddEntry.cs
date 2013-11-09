@@ -82,7 +82,8 @@ namespace TimeSheetApp
                 string hours = txtHours.Text;
                 string body = txtComment.Text;
                 bool isEdit = false;
-                int result = client.addTimeSheetEntry(project, hours, body, isEdit);
+                string date = Convert.ToDateTime(addDate.Text).ToString("yyyy/MM/dd").Replace("/", "-");
+                int result = client.addTimeSheetEntry(project, hours, body, date, isEdit);
                 if (result > 0)
                 {
                     MessageBox.Show("Your entry is successfully added");
@@ -102,6 +103,11 @@ namespace TimeSheetApp
                 MessageBox.Show("Please fill the values");
             }
 
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
 
         }
 

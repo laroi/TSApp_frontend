@@ -33,7 +33,7 @@ namespace TimeSheetApp
         public APIClient() {
             LoadJson();
         }
-        public string baseUrl;// = "http://localhost/projects/timesheetapp/index.php/";//user/login
+        public string baseUrl;// = http://localhost/projects/timesheetapp/index.php/";//user/login
         //public string time;
         //string mac_id = "{mac:'testmac'}";
        
@@ -80,7 +80,8 @@ namespace TimeSheetApp
             var content = syncClient.UploadString(url,parm);
             var o = JsonConvert.DeserializeObject<ProjectData>(content);
             UserModel.projects = new List<project>();
-            if (UserModel.projects != null){
+            if (UserModel.projects != null && UserModel.projects.Count!=0)
+            {
                 foreach (Valuee project in o.valuee) {
                     project _project = new project();
                     _project.project_name = project.name;
@@ -95,9 +96,9 @@ namespace TimeSheetApp
         /*public updateProject(){
         
         }*/
-        public int addTimeSheetEntry(int project_fk,string hours, string body, bool isEdit) {
+        public int addTimeSheetEntry(int project_fk,string hours, string body,string date, bool isEdit) {
             string url = baseUrl + "user/AddTimeSheetEntry";
-            string parm = "project_fk=" + project_fk + "&" + "hours=" + hours + "&body=" + body + "&" + "user_pk=" + UserModel.user_pk.ToString() + "&isEdit=" + isEdit;
+            string parm = "project_fk=" + project_fk + "&" + "hours=" + hours + "&body=" + body + "&date="+ date + "&user_pk=" + UserModel.user_pk.ToString() + "&isEdit=" + isEdit;
             syncClient.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
             var content = syncClient.UploadString(url, parm);
             var o = JsonConvert.DeserializeObject<List<int>>(content);
@@ -116,10 +117,13 @@ namespace TimeSheetApp
             
         }
 
-        public void getTimeSheetEntry(string date, string project) {
-            UserModel.time_sheet_entry = null;
-            UserModel.entry_pk = null;
-            UserModel.hours = null;
+        public bool getTimeSheetEntry(string date, string project) {
+            if (project != "")
+            {
+                UserModel.time_sheet_entry = null;
+                UserModel.entry_pk = null;
+                UserModel.hours = null;
+            }
             string url = baseUrl + "user/getTimeSheetEntry";
             string parm = "";
             parm += "date=" + date;
@@ -132,12 +136,14 @@ namespace TimeSheetApp
             var o = JsonConvert.DeserializeObject<TimeSheetData>(content);
             if (o.getTimeSheet != null && o.getTimeSheet.body != null && o.getTimeSheet.entry_pk != 0)
             {
+                
                 UserModel.time_sheet_entry = o.getTimeSheet.body;
                 UserModel.entry_pk = o.getTimeSheet.entry_pk.ToString();
                 UserModel.hours = o.getTimeSheet.hours;
+                return true;
             }
-            
 
+            return false;
         }
 
         public void getAllProjects() {

@@ -38,14 +38,14 @@
             // dateTimeReport
             // 
             this.dateTimeReport.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeReport.Location = new System.Drawing.Point(209, 94);
+            this.dateTimeReport.Location = new System.Drawing.Point(181, 71);
             this.dateTimeReport.Name = "dateTimeReport";
             this.dateTimeReport.Size = new System.Drawing.Size(156, 20);
             this.dateTimeReport.TabIndex = 0;
             // 
             // btnGetReport
             // 
-            this.btnGetReport.Location = new System.Drawing.Point(290, 180);
+            this.btnGetReport.Location = new System.Drawing.Point(262, 177);
             this.btnGetReport.Name = "btnGetReport";
             this.btnGetReport.Size = new System.Drawing.Size(75, 23);
             this.btnGetReport.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             this.cmbProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProject.FormattingEnabled = true;
-            this.cmbProject.Location = new System.Drawing.Point(209, 132);
+            this.cmbProject.Location = new System.Drawing.Point(181, 109);
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Size = new System.Drawing.Size(156, 21);
             this.cmbProject.TabIndex = 2;
@@ -65,7 +65,7 @@
             // lblMonth
             // 
             this.lblMonth.AutoSize = true;
-            this.lblMonth.Location = new System.Drawing.Point(100, 100);
+            this.lblMonth.Location = new System.Drawing.Point(72, 77);
             this.lblMonth.Name = "lblMonth";
             this.lblMonth.Size = new System.Drawing.Size(70, 13);
             this.lblMonth.TabIndex = 3;
@@ -74,7 +74,7 @@
             // lblProject
             // 
             this.lblProject.AutoSize = true;
-            this.lblProject.Location = new System.Drawing.Point(97, 140);
+            this.lblProject.Location = new System.Drawing.Point(69, 117);
             this.lblProject.Name = "lblProject";
             this.lblProject.Size = new System.Drawing.Size(73, 13);
             this.lblProject.TabIndex = 4;

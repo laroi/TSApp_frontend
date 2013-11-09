@@ -36,6 +36,8 @@
             this.cmbProject = new System.Windows.Forms.ComboBox();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lblHours = new System.Windows.Forms.Label();
+            this.addDate = new System.Windows.Forms.DateTimePicker();
+            this.lblDate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblComments
@@ -49,7 +51,7 @@
             // 
             // txtHours
             // 
-            this.txtHours.Location = new System.Drawing.Point(323, 48);
+            this.txtHours.Location = new System.Drawing.Point(302, 48);
             this.txtHours.Name = "txtHours";
             this.txtHours.Size = new System.Drawing.Size(37, 20);
             this.txtHours.TabIndex = 16;
@@ -103,17 +105,37 @@
             // lblHours
             // 
             this.lblHours.AutoSize = true;
-            this.lblHours.Location = new System.Drawing.Point(282, 51);
+            this.lblHours.Location = new System.Drawing.Point(261, 51);
             this.lblHours.Name = "lblHours";
             this.lblHours.Size = new System.Drawing.Size(35, 13);
             this.lblHours.TabIndex = 18;
             this.lblHours.Text = "Hours";
             // 
+            // addDate
+            // 
+            this.addDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.addDate.Location = new System.Drawing.Point(424, 45);
+            this.addDate.Name = "addDate";
+            this.addDate.Size = new System.Drawing.Size(99, 20);
+            this.addDate.TabIndex = 19;
+            this.addDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(360, 51);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(30, 13);
+            this.lblDate.TabIndex = 20;
+            this.lblDate.Text = "Date";
+            // 
             // AddEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 189);
+            this.ClientSize = new System.Drawing.Size(581, 189);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.addDate);
             this.Controls.Add(this.lblHours);
             this.Controls.Add(this.lblComments);
             this.Controls.Add(this.txtHours);
@@ -140,5 +162,7 @@
         private System.Windows.Forms.ComboBox cmbProject;
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Label lblHours;
+        private System.Windows.Forms.DateTimePicker addDate;
+        private System.Windows.Forms.Label lblDate;
     }
 }

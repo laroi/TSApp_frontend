@@ -12,12 +12,15 @@ namespace TimeSheetApp
         APIClient objclient = new APIClient();
         public void Execute(IJobExecutionContext context)
         {
-           // objclient.getTimeSheetEntry();
-            if (formInstance.Visible)
-                formInstance.Focus();
-            else
-                formInstance.ShowDialog();
-            //Console.WriteLine("My Job is working now {0}", System.DateTime.Now.ToString("r"));
+            if (!objclient.getTimeSheetEntry(DateTime.Today.ToString("dd-MM-yyyy"), null))
+            {
+                
+                if (formInstance.Visible)
+                    formInstance.Focus();
+                else
+                    formInstance.ShowDialog();
+            }
+           // Console.WriteLine("My Job is working now {0}", System.DateTime.Now.ToString("r"));
             
         }
     }

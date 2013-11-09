@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace TimeSheetApp
 {
@@ -22,6 +24,23 @@ namespace TimeSheetApp
             var dt = DateTime.ParseExact(times[0].ToString() + ":" + times[1].ToString() + ":" + times[2].ToString(), "HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
             dateTime.Value = dt;
             txtServer.Text = UserModel.server;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string output = "";
+                    output+= "{";
+                    output += "settings: {";
+				    output += "server_url:\""+txtServer.Text+"/\",";
+				    output += "time:\""+dateTime.Text.Replace(":",",")+"\"";
+			output +="}";
+
+            output += "}";
+            UserModel.server = txtServer.Text + "/";
+            UserModel.time = dateTime.Text;
+            StreamWriter writetext = new StreamWriter("./settings.json");
+            writetext.WriteLine(output);
+            writetext.Close();
         }
     }
 }
