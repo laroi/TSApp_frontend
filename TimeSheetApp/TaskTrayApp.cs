@@ -16,11 +16,22 @@ namespace TimeSheetApp
         Form1 formInstance = new Form1();
         Register objRegister = new Register();
         APIClient objApiClient = new APIClient();
+        EditServer objEditServer = new EditServer();
         public TaskTrayApp()
         {
             _register = new Register();
             Register.Complete += new EventHandler<TextArgs>(completeRegistration);
             RunTaskApp();
+        }
+
+        public bool isFormOpen(Type formType){
+            foreach (Form form in Application.OpenForms) 
+                if (form.GetType().Name == form.Name)
+                
+                    return true;
+                
+                return false;
+            
         }
         public void completeRegistration(object sender, TextArgs e) 
         {
@@ -30,10 +41,16 @@ namespace TimeSheetApp
         {
             // Only show the message if the settings say we can.
            // if (TaskTrayApplication.Properties.Settings.Default.ShowMessage)
-            if (formInstance.Visible)
-                formInstance.Focus();
-            else
-                formInstance.ShowDialog();
+            if (!isFormOpen(typeof(Form1)))
+            {
+                if (formInstance.Visible)
+                    formInstance.Focus();
+                else
+                    formInstance.ShowDialog();
+            }
+            else {
+                MessageBox.Show("close the other instance");
+            }
         }
         void Exit(object sender, EventArgs e)
         {
@@ -80,6 +97,11 @@ namespace TimeSheetApp
                 sched.ScheduleJob(job, trigger);
                 sched.Start();
             }
+            else if (objApiClient.baseUrl == null || objApiClient.baseUrl == "")
+            {
+                objEditServer.Show();
+            }
+
             else
             {
                 objRegister.Show();

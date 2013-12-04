@@ -61,7 +61,9 @@
     <Compile Include="AddEntry.Designer.cs">
       <DependentUpon>AddEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="APIClient.cs" />
+    <Compile Include="APIClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Data\project.cs" />
     <Compile Include="Data\Result.cs" />
     <Compile Include="Data\settingsItem.cs" />
