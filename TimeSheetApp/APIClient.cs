@@ -10,6 +10,8 @@ using TimeSheetApp.Data;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 
 namespace TimeSheetApp
@@ -283,7 +285,19 @@ namespace TimeSheetApp
 
         public void LoadJson()
         {
-            using (StreamReader r = new StreamReader("./settings.json"))
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/TimeSheetApp";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            if(File.Exists(path + "/settings.json"))
+            {
+                DirectorySecurity sec = Directory.GetAccessControl(path + "./settings.json");
+                // Using this instead of the "Everyone" string means we work on non-English systems.
+                SecurityIdentifier everyone = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+                sec.AddAccessRule(new FileSystemAccessRule(everyone, FileSystemRights.Modify | FileSystemRights.Synchronize, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+                Directory.SetAccessControl(path , sec);
+            using (StreamReader r = new StreamReader(path +"./settings.json"))
             {
                 try
                 {
@@ -306,6 +320,7 @@ namespace TimeSheetApp
                     Application.Exit();
                 }
             }
+        }
         }
     }
 }

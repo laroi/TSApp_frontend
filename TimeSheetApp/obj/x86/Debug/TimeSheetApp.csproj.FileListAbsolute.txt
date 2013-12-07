@@ -40,7 +40,5 @@ C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\Tim
 C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.GetReport.resources
 C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.Properties.Resources.resources
 C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\TimeSheetApp.TextArgss.resources
-C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
 C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
 C:\xampp\htdocs\projects\TimeSheet\TSApp_frontend\TimeSheetApp\obj\x86\Debug\GenerateResource.write.1.tlog

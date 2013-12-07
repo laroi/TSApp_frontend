@@ -28,6 +28,7 @@ namespace TimeSheetApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/TimeSheetApp";
             string output = "";
                     output+= "{";
                     output += "settings: {";
@@ -38,9 +39,18 @@ namespace TimeSheetApp
             output += "}";
             UserModel.server = txtServer.Text + "/";
             UserModel.time = dateTime.Text;
-            StreamWriter writetext = new StreamWriter("./settings.json");
-            writetext.WriteLine(output);
-            writetext.Close();
+            try
+            {
+                StreamWriter writetext = new StreamWriter(path + "/settings.json");
+                writetext.WriteLine(output);
+                writetext.Close();
+                MessageBox.Show("Updated server settings successfully");
+                this.Hide();
+            }
+            catch 
+            {
+                MessageBox.Show("Updation was not successful");
+            }
         }
     }
 }
