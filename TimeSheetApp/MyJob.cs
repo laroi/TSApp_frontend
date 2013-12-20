@@ -12,7 +12,7 @@ namespace TimeSheetApp
         APIClient objclient = new APIClient();
         public void Execute(IJobExecutionContext context)
         {
-            if (!objclient.getTimeSheetEntry(DateTime.Today.ToString("dd-MM-yyyy"), null))
+            if (!objclient.getTimeSheetEntry(DateTime.Today.ToString("yyyy-MM-dd"), null))
             {
                 
                 if (formInstance.Visible)

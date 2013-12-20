@@ -78,7 +78,7 @@ namespace TimeSheetApp
         {
             if (txtHours.Text != "" && txtComment.Text != "")
             {
-                int project = cmbProject.SelectedIndex + 1;
+                int project = Convert.ToInt32(cmbProject.SelectedValue);
                 string hours = txtHours.Text;
                 string body = txtComment.Text;
                 bool isEdit = false;

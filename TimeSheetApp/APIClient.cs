@@ -90,7 +90,7 @@ namespace TimeSheetApp
                     var content = syncClient.UploadString(url, parm);
                     var o = JsonConvert.DeserializeObject<ProjectData>(content);
                     UserModel.projects = new List<project>();
-                    if (UserModel.projects != null && UserModel.projects.Count != 0)
+                    if (o.valuee.Count != 0)
                     {
                         foreach (Valuee project in o.valuee)
                         {
@@ -153,7 +153,7 @@ namespace TimeSheetApp
                 string url = baseUrl + "user/getTimeSheetEntry";
                 string parm = "";
                 parm += "date=" + date;
-                if (project != "")
+                if (project != "" && project!=null)
                 {
                     parm += "&" + "project=" + project;
                 }
@@ -168,6 +168,9 @@ namespace TimeSheetApp
                     UserModel.entry_pk = o.getTimeSheet.entry_pk.ToString();
                     UserModel.hours = o.getTimeSheet.hours;
                     return true;
+                }
+                else {
+                    return false;
                 }
             }
                 return false;
@@ -286,10 +289,6 @@ namespace TimeSheetApp
         public void LoadJson()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/TimeSheetApp";
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
             if(File.Exists(path + "/settings.json"))
             {
                 DirectorySecurity sec = Directory.GetAccessControl(path + "./settings.json");
