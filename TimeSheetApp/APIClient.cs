@@ -90,7 +90,8 @@ namespace TimeSheetApp
                     var content = syncClient.UploadString(url, parm);
                     var o = JsonConvert.DeserializeObject<ProjectData>(content);
                     UserModel.projects = new List<project>();
-                    if (o.valuee.Count != 0)
+                    if(o.valuee !=null)
+                        if ((o.valuee != null ) && (o.valuee.Count != 0))
                     {
                         foreach (Valuee project in o.valuee)
                         {
@@ -100,6 +101,10 @@ namespace TimeSheetApp
                             UserModel.projects.Add(_project);
 
                         }
+                    }
+                    else {
+                        EditProject objEditProject = new EditProject();
+                        objEditProject.Show();
                     }
                 }
             }
