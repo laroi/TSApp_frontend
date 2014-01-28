@@ -16,8 +16,11 @@ using System.Security.Principal;
 
 namespace TimeSheetApp
 {
+
     public class APIClient : Form
     {
+        public string baseUrl;
+        
         public string GetMACAddress()
         {
             NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
@@ -34,9 +37,15 @@ namespace TimeSheetApp
         }
 
         public APIClient() {
-            LoadJson();
+            if (UserModel.server != null) {
+                baseUrl = UserModel.server;
+            }
+            if (baseUrl == null)
+            {
+                LoadJson();
+            }
         }
-        public string baseUrl;// = http://localhost/projects/timesheetapp/index.php/";//user/login
+        // = http://localhost/projects/timesheetapp/index.php/";//user/login
         //public string time;
         //string mac_id = "{mac:'testmac'}";
        
@@ -90,8 +99,7 @@ namespace TimeSheetApp
                     var content = syncClient.UploadString(url, parm);
                     var o = JsonConvert.DeserializeObject<ProjectData>(content);
                     UserModel.projects = new List<project>();
-                    if(o.valuee !=null)
-                        if ((o.valuee != null ) && (o.valuee.Count != 0))
+                    if ((o.valuee != null) && (o.valuee.Count != 0))
                     {
                         foreach (Valuee project in o.valuee)
                         {
@@ -103,9 +111,9 @@ namespace TimeSheetApp
                         }
                     }
                     else {
-                        EditProject objEditProject = new EditProject();
-                        objEditProject.Show();
+                        UserModel.projects = new List<project>();
                     }
+                   
                 }
             }
             catch (Exception e)
@@ -194,13 +202,14 @@ namespace TimeSheetApp
                 var content = syncClient.DownloadString(url);
                 var o = JsonConvert.DeserializeObject<ProjectData>(content);
                 UserModel.all_projects = new List<project>();
-
-                foreach (Valuee project in o.valuee)
-                {
-                    project _project = new project();
-                    _project.project_name = project.name;
-                    _project.project_pk = project.project_pk;
-                    UserModel.all_projects.Add(_project);
+                if (o.valuee!=null){
+                    foreach (Valuee project in o.valuee)
+                    {
+                        project _project = new project();
+                        _project.project_name = project.name;
+                        _project.project_pk = project.project_pk;
+                        UserModel.all_projects.Add(_project);
+                    }
                 }
             }
         }
@@ -249,12 +258,12 @@ namespace TimeSheetApp
             }
         }
 
-        public int EditTimeSheetEntry(string project_fk, string hours, string body, string entry_pk)
+        public int EditTimeSheetEntry(string project_fk, string hours, string body, string entry_pk, string date)
         {
             if (baseUrl != "" && baseUrl != null)
             {
                 string url = baseUrl + "user/AddTimeSheetEntry";
-                string parm = "entry_pk=" + entry_pk + "&project_fk=" + project_fk + "&" + "hours=" + hours + "&body=" + body + "&" + "user_pk=" + UserModel.user_pk.ToString() + "&isEdit=true";
+                string parm = "entry_pk=" + entry_pk + "&project_fk=" + project_fk + "&" + "hours=" + hours + "&body=" + body + "&" + "user_pk=" + UserModel.user_pk.ToString() + "&isEdit=true&date="+date;
                 syncClient.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                 var content = syncClient.UploadString(url, parm);
                 var o = JsonConvert.DeserializeObject<List<int>>(content);
@@ -293,38 +302,41 @@ namespace TimeSheetApp
 
         public void LoadJson()
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/TimeSheetApp";
-            if(File.Exists(path + "/settings.json"))
-            {
-                DirectorySecurity sec = Directory.GetAccessControl(path + "./settings.json");
-                // Using this instead of the "Everyone" string means we work on non-English systems.
-                SecurityIdentifier everyone = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
-                sec.AddAccessRule(new FileSystemAccessRule(everyone, FileSystemRights.Modify | FileSystemRights.Synchronize, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
-                Directory.SetAccessControl(path , sec);
-            using (StreamReader r = new StreamReader(path +"./settings.json"))
-            {
-                try
+           
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/TimeSheetApp";
+                if (File.Exists(path + "/settings.json"))
                 {
-                    string json = r.ReadToEnd();
-                    var jsonobj = JsonConvert.DeserializeObject<settingsItem>(json);
-                    if (jsonobj != null)
+                    DirectorySecurity sec = Directory.GetAccessControl(path + "./settings.json");
+                    // Using this instead of the "Everyone" string means we work on non-English systems.
+                    SecurityIdentifier everyone = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+                    sec.AddAccessRule(new FileSystemAccessRule(everyone, FileSystemRights.Modify | FileSystemRights.Synchronize, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+                    Directory.SetAccessControl(path, sec);
+                    using (StreamReader r = new StreamReader(path + "./settings.json"))
                     {
-                        UserModel.server = jsonobj.settings.server_url;
-                        baseUrl = UserModel.server;
-                        UserModel.time = jsonobj.settings.time;
-                    }
-                    else 
-                    {
-                        MessageBox.Show("Please edit server settings");
-                        return;
+                        try
+                        {
+                            string json = r.ReadToEnd();
+                            var jsonobj = JsonConvert.DeserializeObject<settingsItem>(json);
+                            if (jsonobj != null)
+                            {
+                                UserModel.server = jsonobj.settings.server_url;
+                                baseUrl = UserModel.server;
+                                UserModel.time = jsonobj.settings.time;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please edit server settings");
+                                return;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show("An Error reading the settings file");
+                            Application.Exit();
+                        }
                     }
                 }
-                catch (Exception e) {
-                    MessageBox.Show("An Error reading the settings file");
-                    Application.Exit();
-                }
-            }
-        }
+            
         }
     }
 }

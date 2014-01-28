@@ -97,7 +97,7 @@ namespace TimeSheetApp
                 sched.ScheduleJob(job, trigger);
                 sched.Start();
             }
-            else if (objApiClient.baseUrl == null || objApiClient.baseUrl == "")
+            else if (UserModel.server == null || UserModel.server == "")
             {
                 objEditServer.Show();
             }

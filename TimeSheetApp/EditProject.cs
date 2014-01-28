@@ -74,6 +74,8 @@ namespace TimeSheetApp
                 project prjct = new project();
                 prjct.project_pk=to_pk;
                 prjct.project_name = to;
+                if (UserModel.projects ==null)
+                UserModel.projects = new List<project>();
                 UserModel.projects.Add(prjct);
                 listMyProjects.DataSource = null;
                 listMyProjects.DataSource = new BindingSource(UserModel.projects, null);
@@ -116,15 +118,29 @@ namespace TimeSheetApp
 
         private void EditProject_Load(object sender, EventArgs e)
         {
-           
-            client.getAllProjects();
-            listAllProjects.DataSource = new BindingSource(UserModel.all_projects, null);
-            listAllProjects.DisplayMember = "project_name";
-            listAllProjects.ValueMember = "project_pk";
+            try
+            {
 
-            listMyProjects.DataSource = new BindingSource(UserModel.projects, null);
-            listMyProjects.DisplayMember = "project_name";
-            listMyProjects.ValueMember = "project_pk";
+                client.getAllProjects();
+                if (UserModel.all_projects.Count > 0)
+                {
+                    listAllProjects.DataSource = new BindingSource(UserModel.all_projects, null);
+                    listAllProjects.DisplayMember = "project_name";
+                    listAllProjects.ValueMember = "project_pk";
+
+                   
+                }
+                if (UserModel.projects!=null && UserModel.projects.Count > 0)
+                {
+                    listMyProjects.DataSource = new BindingSource(UserModel.projects, null);
+                    listMyProjects.DisplayMember = "project_name";
+                    listMyProjects.ValueMember = "project_pk";
+                }
+            }
+            catch (Exception ex){
+                MessageBox.Show(ex.ToString());
+            
+            }
             
         }
 

@@ -56,7 +56,8 @@ namespace TimeSheetApp
                 {
                     string hours = txtHours.Text;
                     string body = txtEntry.Text;
-                    int result = client.EditTimeSheetEntry(project_pk, hours, body, UserModel.entry_pk);
+                    string date = Convert.ToDateTime(projectDate.Text).ToString("yyyy/MM/dd").Replace("/", "-");
+                    int result = client.EditTimeSheetEntry(project_pk, hours, body, UserModel.entry_pk,date);
                     if (result > 0)
                     {
                         UserModel.time_sheet_entry = null;

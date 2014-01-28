@@ -58,6 +58,11 @@ namespace TimeSheetApp
             
             client.getProjects();
             lblUserName.Text = UserModel.first_name + " " + UserModel.last_name;
+            /*if (UserModel.projects.Count == 0) {
+                this.Hide();
+                EditProject objEditProject = new EditProject();
+                objEditProject.Show();
+            }*/
             BindingList<project> bl = new BindingList<project>(UserModel.projects);
             //bl.Add(UserModel.projects);
             bs.DataSource = UserModel.projects;
